@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.scss","something.scss"],"names":[],"mappings":"AACA;EACE,mBAAmB,EACpB;;ACHD;EACE,WAAW,EACZ","file":"app.css","sourcesContent":["// @import \"node_modules/bootstrap-sass/assets/stylesheets/bootstrap\";\nbody {\n  font-family: Menlo;\n}\n","body {\n  color: red;\n}\n"],"sourceRoot":"/source/"}
