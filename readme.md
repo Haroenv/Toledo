@@ -5,6 +5,7 @@
 ```
 $ composer install
 $ npm install
+$ sqlite3 database/database.sqlite ""
 $ php artisan migrate --seed
 $ php artisan serve
 ```
