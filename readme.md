@@ -2,6 +2,8 @@
 
 # Setting it up
 
+Fill in the `.env` with an app key, your mailgun settings
+
 ```
 $ composer install
 $ npm install
