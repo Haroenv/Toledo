@@ -10,6 +10,20 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
+                        <div class="form-group{{ $errors->has('invitation-code') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Invitiation code</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="invitation-code" value="{{ old('invitation-code') }}">
+
+                                @if ($errors->has('invitation-code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('invitation-code') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Name</label>
 
