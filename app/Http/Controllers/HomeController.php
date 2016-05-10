@@ -26,4 +26,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Reset a password
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function reset()
+    {
+        return view('auth.passwords.reset');
+    }
 }
