@@ -6,7 +6,7 @@
 $ composer install
 $ npm install
 $ sqlite3 database/database.sqlite ""
-$ gulp
+$ npm run dev
 $ php artisan migrate --seed
 $ php artisan serve
 ```
