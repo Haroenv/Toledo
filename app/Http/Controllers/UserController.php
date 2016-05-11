@@ -39,6 +39,7 @@ class UserController extends Controller {
      */
     public function update() {
       if (Input::has('name')) {
+        // todo: find out why it breaks when input doesn't conform to validator
         Auth::user()->update(['name'=>Input::get('name')]);
       }
       return Redirect::to('home');
