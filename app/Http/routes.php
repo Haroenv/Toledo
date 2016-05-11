@@ -29,4 +29,5 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 // user route
-Route::get('/user', 'HomeController@user');
+Route::get('/user', 'UserController@show');
+Route::post('/user', 'UserController@update');
