@@ -12,13 +12,20 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/user') }}">
                         {!! csrf_field() !!}
 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Userid</label>
+                            <div class="col-md-6">
+                                <span class="form-control">{{$user->id}}</span>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="name" value="{{ $user->name }}">
+                                <input type="text" class="form-control" name="name" value="{{ $user->name }}">
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>

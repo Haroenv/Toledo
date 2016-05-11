@@ -35,6 +35,7 @@ class UserController extends Controller
     /**
      * Update the info of a user
      *
+     * @todo update the information
      * @return \Illuminate\Http\Response
      */
     public function update()
