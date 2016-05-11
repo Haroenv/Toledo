@@ -15,6 +15,13 @@ $ php artisan serve
 
 And it should be open at [localhost:8000](http://localhost:8000).
 
+# Features
+
+- [x] reset password
+- [ ] teachers and students
+- [ ] announcements
+- [ ] file uploads
+
 # License
 
 Haroen Viaene
