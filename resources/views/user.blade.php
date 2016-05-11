@@ -9,15 +9,8 @@
 
                 <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/user') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ action('UserController@update') }}">
                         {!! csrf_field() !!}
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Userid</label>
-                            <div class="col-md-6">
-                                <span class="form-control">{{$user->id}}</span>
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Name</label>
@@ -33,15 +26,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('inscriptions') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Inscriptions</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+                                <!-- todo: add inscriptions -->
+                                <input type="text" class="form-control" name="inscriptions" value="TO DO!!">
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('inscriptions'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('inscriptions') }}</strong>
                                     </span>
                                 @endif
                             </div>

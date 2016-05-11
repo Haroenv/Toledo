@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Redirect;
 use Auth;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
@@ -40,6 +42,9 @@ class UserController extends Controller
      */
     public function update()
     {
-        return '';
+        if (Input::has('name')) {
+          Auth::user()->update(['name'=>Input::get('name')]);
+        }
+        return Redirect::to('home');
     }
 }
