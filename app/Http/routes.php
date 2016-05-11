@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/help', function() {
+    return view('help');
+});
+
 Route::auth();
 
 // dashboard
