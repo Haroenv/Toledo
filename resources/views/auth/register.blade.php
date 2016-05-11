@@ -13,10 +13,9 @@
 
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                            <label class="col-md-4 control-label">E-Mail Address <a href="{{url('help')}}"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
 
                             <div class="col-md-6">
-                                <p>Your school email address <a href="{{url('help')}}"><i class="fa fa-question-circle" aria-hidden="true"></i></a></p>
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
