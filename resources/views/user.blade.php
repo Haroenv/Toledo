@@ -26,20 +26,37 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('inscriptions') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Inscriptions</label>
+                        @if (strpos($user->email, 'student'))
+                            <div class="form-group{{ $errors->has('inscriptions') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">Inscriptions</label>
 
-                            <div class="col-md-6">
-                                <!-- todo: add inscriptions -->
-                                <input type="text" class="form-control" name="inscriptions" value="TO DO!!">
+                                <div class="col-md-6">
+                                    <!-- todo: add inscriptions -->
+                                    <input type="text" class="form-control" name="inscriptions" value="TO DO!!">
 
-                                @if ($errors->has('inscriptions'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('inscriptions') }}</strong>
-                                    </span>
-                                @endif
+                                    @if ($errors->has('inscriptions'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('inscriptions') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="form-group{{ $errors->has('classes') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">Classes</label>
+
+                                <div class="col-md-6">
+                                    <!-- todo: add classes -->
+                                    <input type="text" class="form-control" name="classes" value="TO DO!!">
+
+                                    @if ($errors->has('classes'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('classes') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
