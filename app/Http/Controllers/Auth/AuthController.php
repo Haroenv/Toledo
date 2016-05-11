@@ -51,7 +51,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' =>  array(
-                'regex:/(r\d+@student\.|u\d+@)kuleuven\.be/',
+                'regex:/^(r\d+@student\.|u\d+@)kuleuven\.be/',
                 'required',
                 'email',
                 'max:255',
