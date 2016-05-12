@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <figure>
-                        <img src="https://toledo.kuleuven.be/img/toledologo2015.png/image_preview" alt="toledo">
+                        <img src="{{ asset('img/logo-medium.png') }}" alt="toledo">
                         <figcaption>Toetsen en leren doeltreffend ondersteunen</figcaption>
                     </figure>
                     <section>
