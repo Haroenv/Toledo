@@ -15,11 +15,39 @@
                             <label class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="BSysB">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Full name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="fullname" value="{{ old('fullname') }}" placeholder="Basis Systeembeheer">
+
+                                @if ($errors->has('fullname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('fullname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Identifier</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="id" value="{{ old('id') }}" placeholder="JLW000">
+
+                                @if ($errors->has('id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('id') }}</strong>
                                     </span>
                                 @endif
                             </div>

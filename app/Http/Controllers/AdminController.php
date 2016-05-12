@@ -1,22 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
-class AdminController extends Controller {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct() {
-      //todo: only allow admins
-      $this->middleware('auth');
-    }
+use Redirect;
+use Auth;
+use Illuminate\Support\Facades\Input;
 
+class AdminController extends Controller {
     /**
      * place to add new courses or delete courses
      *

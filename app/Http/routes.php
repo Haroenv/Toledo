@@ -35,8 +35,10 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 // admin (add a course)
-Route::get('/admin', 'AdminController@show');
-Route::post('/admin/add', 'AdminController@add');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
+  Route::get('/', 'AdminController@show');
+  Route::post('add', 'AdminController@add');
+});
 
 // user route
 Route::get('/user', 'UserController@show');
