@@ -20,6 +20,7 @@ Route::get('/help', function() {
     return view('help');
 });
 
+// allow for authorisation
 Route::auth();
 
 // dashboard
@@ -32,6 +33,10 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+// admin (add a course)
+Route::get('/admin', 'AdminController@show');
+Route::post('/admin/add', 'AdminController@add');
 
 // user route
 Route::get('/user', 'UserController@show');

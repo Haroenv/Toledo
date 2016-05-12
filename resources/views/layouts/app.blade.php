@@ -36,6 +36,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    @if (!Auth::guest())
+                    @if (!strpos(Auth::user()->email, 'student'))
+                    <li><a href="{{ url('/admin') }}">Admin</a></li>
+                    @endif
+                    @endif
                     <li><a href="{{ url('/help') }}">Help</a></li>
                 </ul>
 

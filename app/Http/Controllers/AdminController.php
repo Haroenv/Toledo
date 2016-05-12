@@ -6,41 +6,37 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use Redirect;
-use Auth;
-use Illuminate\Support\Facades\Input;
-
-class UserController extends Controller {
+class AdminController extends Controller {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct() {
+      //todo: only allow admins
       $this->middleware('auth');
     }
 
     /**
-     * Show the user page
+     * place to add new courses or delete courses
      *
      * @return \Illuminate\Http\Response
      */
     public function show() {
-      return view('user', [
-        'user' => Auth::user(),
-        ]);
+      return view('admin');
     }
 
     /**
-     * Update the info of a user
+     * add a new course
      *
      * @return \Illuminate\Http\Response
      */
-    public function update() {
-      if (Input::has('name')) {
-        // todo: find out why it breaks when input doesn't conform to validator
-        Auth::user()->update(['name'=>Input::get('name')]);
+    public function add() {
+      if (Input::has('name') && Input::has('fullname') && Input::has('id')) {
+        // todo: put in Course
+        return Input::all();
+        // Course::add();
       }
       return Redirect::to('home');
     }
-  }
+}
