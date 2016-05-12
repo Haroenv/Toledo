@@ -36,11 +36,11 @@ class UserController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function update() {
-      if (Input::has('name')) {
-        // todo: find out why it breaks when input doesn't conform to validator
-        Auth::user()->update(['name'=>Input::get('name')]);
-      }
+    public function update(Request $request) {
+      $this->validate($request, [
+        'name' => 'required',
+        ]);
+      Auth::user()->update(['name'=>Input::get('name')]);
       return Redirect::to('home');
     }
   }
