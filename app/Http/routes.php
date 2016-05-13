@@ -12,9 +12,8 @@
 */
 
 // unauthorised views
-Route::get('/', function (Request $request) {
-  $message = $request->session()->get('message');
-  return view('welcome',['message'=>$message]);
+Route::get('/', function () {
+  return view('welcome');
 });
 
 Route::get('/help', function() {
