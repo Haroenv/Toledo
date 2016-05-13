@@ -42,6 +42,7 @@ class AdminController extends Controller {
       $course->fullname = $request->fullname;
       $coourse->code = $request->code;
       $course->save();
+      // todo: doesn't redirect for some reason
       return Redirect::to('home');
     }
   }
