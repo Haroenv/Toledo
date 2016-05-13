@@ -16,8 +16,9 @@ class AdminController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function show() {
-      return view('admin');
+    public function show(Request $request) {
+      $message = $request->session()->get('message');
+      return view('admin',['message',$message]);
     }
 
     /**
@@ -40,9 +41,8 @@ class AdminController extends Controller {
         ]);
       $course->name = $request->name;
       $course->fullname = $request->fullname;
-      $coourse->code = $request->code;
+      $course->code = $request->code;
       $course->save();
-      // todo: doesn't redirect for some reason
-      return Redirect::to('home');
+      return Redirect::route('dashboard')->with('message', 'Course added');
     }
   }

@@ -25,10 +25,12 @@ class UserController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function show() {
+    public function show(Request $request) {
+      $message = $request->session()->get('message');
       return view('user', [
         'user' => Auth::user(),
-        ]);
+        'message' => $message,
+      ]);
     }
 
     /**
@@ -39,7 +41,7 @@ class UserController extends Controller {
     public function update(Request $request) {
       $this->validate($request, [
         'name' => 'required',
-        ]);
+      ]);
       Auth::user()->update(['name'=>Input::get('name')]);
       return Redirect::to('home');
     }

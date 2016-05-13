@@ -69,6 +69,12 @@
     </nav>
 </div>
 
+    @if (isset($message))
+    <div class="alert alert-info">
+      <strong>Info:</strong> {{$message}}
+    </div>
+    @endif
+
     @yield('content')
 
     <!-- JavaScripts -->

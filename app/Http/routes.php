@@ -12,19 +12,20 @@
 */
 
 // unauthorised views
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+  $message = $request->session()->get('message');
+  return view('welcome',['message'=>$message]);
 });
 
 Route::get('/help', function() {
-    return view('help');
+  return view('help');
 });
 
 // allow for authorisation
 Route::auth();
 
 // dashboard
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as' => 'dashboard', 'uses' => 'HomeController@index']);
 
 // Password reset link request routes...
 Route::get('password/email', 'Auth\PasswordController@getEmail');
