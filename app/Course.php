@@ -13,4 +13,6 @@ class Course extends Model {
     protected $fillable = [
         'name', 'fullname', 'id',
     ];
+
+    protected $primaryKey = 'id';
 }

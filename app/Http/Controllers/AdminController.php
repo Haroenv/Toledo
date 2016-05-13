@@ -39,6 +39,7 @@ class AdminController extends Controller {
           ),
         ]);
       // todo: add in db
+      Course::add();
       return Redirect::to('home');
     }
   }
