@@ -1,5 +1,7 @@
 # Serverside Webscripten 2: Project
 
+> The technology stack in this project is chosen by the exercise; not by myself
+
 # Setting it up
 
 Fill in the `.env` with an app key, your mailgun settings
