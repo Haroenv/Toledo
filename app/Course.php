@@ -14,4 +14,7 @@ class Course extends Model {
         'name', 'fullname', 'code',
     ];
 
+    public function notifications() {
+      return $this->hasMany('App\Notification');
+    }
 }
