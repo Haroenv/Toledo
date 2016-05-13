@@ -12,7 +12,7 @@ class CoursesTableSeeder extends Seeder {
         DB::table('courses')->insert([
           'name' => str_random(10),
           'fullname' => str_random(20),
-          'id' => 'JL' . str_random(1) . 345,
+          'code' => 'JL' . str_random(1) . 345,
         ]);
     }
 }
