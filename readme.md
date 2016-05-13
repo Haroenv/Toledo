@@ -26,6 +26,8 @@ And it should be open at [localhost:8000](http://localhost:8000).
 
 # License
 
+Toledo as a name is property of KU Leuven.
+
 Haroen Viaene
 
 Apache 2.0
