@@ -25,10 +25,11 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function single($item) {
-
+        $course = Course::where('code',$item)->first();
+        $notifications = Notification::where('id',$course->id)->get();
         return view('course',[
-            'course' => Course::where('code',$item)->first(),
-            'notifications' => Notification::all(),
+            'course' => $course,
+            'notifications' => $notifications,
         ]);
     }
 }

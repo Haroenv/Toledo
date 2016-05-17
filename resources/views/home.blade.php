@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             @foreach ($courses as $course)
-            <a href="{{ url('/course/'.$course->id) }}" class="nolink">
+            <a href="{{ url('/course/'.$course->code) }}" class="nolink">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{$course->name}}</div>
 
                     <div class="panel-body">
-                        <p>id: {{$course->id}}</p>
+                        <p>(id: {{$course->id}})</p>
                         <p>name: {{$course->fullname}}</p>
                         <p>code: {{$course->code}}</p>
                     </div>
