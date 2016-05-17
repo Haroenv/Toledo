@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Faker\Factory as Faker;
+
 class CoursesTableSeeder extends Seeder {
     /**
      * Run the database seeds.

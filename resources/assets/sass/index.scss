@@ -64,3 +64,13 @@
 .fa-btn {
   margin-right: 6px;
 }
+
+a.nolink {
+  text-decoration: none;
+  color: initial;
+
+  &:hover {
+    text-decoration: none;
+    color: initial;
+  }
+}

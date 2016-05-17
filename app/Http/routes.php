@@ -43,3 +43,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
 // user route
 Route::get('/user', 'UserController@show');
 Route::post('/user', 'UserController@update');
+
+// courses
+Route::get('/course/{id}', 'CourseController@single');

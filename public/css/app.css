@@ -5752,4 +5752,11 @@ button.close {
 .fa-btn {
   margin-right: 6px; }
 
+a.nolink {
+  text-decoration: none;
+  color: initial; }
+  a.nolink:hover {
+    text-decoration: none;
+    color: initial; }
+
 /*# sourceMappingURL=app.css.map */
