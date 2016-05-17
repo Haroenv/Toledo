@@ -26,7 +26,7 @@ class CourseController extends Controller {
      */
     public function single($item) {
         $course = Course::where('code',$item)->first();
-        $notifications = Notification::where('id',$course->id)->get();
+        $notifications = Notification::where('course_id',$course->id)->get();
         return view('course',[
             'course' => $course,
             'notifications' => $notifications,
