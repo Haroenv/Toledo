@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Faker\Factory as Faker;
+
 use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder {
@@ -11,8 +13,9 @@ class UsersTableSeeder extends Seeder {
    * @return void
    */
   public function run() {
+    $faker = Faker::create();
     DB::table('users')->insert([
-      'name' => str_random(10),
+      'name' => $faker->name,
       'email' => 'u' . rand(10000,100000) . '@kuleuven.be',
       'password' => bcrypt('test'),
       'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -20,7 +23,7 @@ class UsersTableSeeder extends Seeder {
     ]);
 
     DB::table('users')->insert([
-      'name' => str_random(10),
+      'name' => $faker->name,
       'email' => 'r' . rand(10000,100000) . '@student.kuleuven.be',
       'password' => bcrypt('test'),
       'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
