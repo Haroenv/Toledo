@@ -17,4 +17,8 @@ class Course extends Model {
     public function notifications() {
       return $this->hasMany('App\Notification');
     }
+
+    public function users() {
+      return $this->belongsToMany('App\User');
+    }
 }

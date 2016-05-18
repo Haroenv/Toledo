@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Course;
 use App\Notification;
+use Auth;
 
 class CourseController extends Controller {
     /**
@@ -25,8 +26,9 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function single($item) {
+        //var_dump(Auth::user()->courses()->get());
         $course = Course::where('code',$item)->first();
-        $notifications = Notification::where('course_id',$course->id)->get();
+        $notifications = $course->notifications()->get();
         return view('course',[
             'course' => $course,
             'notifications' => $notifications,
