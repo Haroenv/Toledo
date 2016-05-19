@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Auth;
+
 class User extends Authenticatable {
     /**
      * The attributes that are mass assignable.
@@ -25,5 +27,14 @@ class User extends Authenticatable {
 
     public function courses() {
       return $this->belongsToMany('App\Course');
+    }
+
+    /**
+     * checks if user is admin
+     *
+     * @return boolean true if admin
+     */
+    public function isAdmin() {
+        return !strpos(Auth::user()->email, 'student');
     }
 }

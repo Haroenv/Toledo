@@ -38,7 +38,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/home') }}">Home</a></li>
                 @if (!Auth::guest())
-                @if (!strpos(Auth::user()->email, 'student'))
+                @if (Auth::user()->isAdmin())
                 <li><a href="{{ url('/admin') }}">Admin</a></li>
                 @endif
                 @endif
