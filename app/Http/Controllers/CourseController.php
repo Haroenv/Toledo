@@ -34,4 +34,14 @@ class CourseController extends Controller {
             'notifications' => $notifications,
         ]);
     }
+
+    // todo
+    public function addNotification() {
+        # code...
+    }
+
+    // todo
+    public function editNotification() {
+        # code...
+    }
 }
