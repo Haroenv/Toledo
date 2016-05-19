@@ -45,4 +45,6 @@ class AdminController extends Controller {
       $course->save();
       return Redirect::route('dashboard')->with('message', 'Course added');
     }
+
+    // todo: change things of course
   }

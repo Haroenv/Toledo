@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use Redirect;
@@ -69,7 +70,12 @@ class CourseController extends Controller {
         return Redirect::to('course/'.$id)->with('message', 'Notification added');
   }
 
-    // todo
-  public function executeEditNotification($notification) {
+  public function executeEditNotification(Request $request,$id,$notification) {
+    $this->validate($request, [
+        'title' => 'required|max:255',
+        'content' => 'required',
+    ]);
+    Notification::where('id',$notification)->first()->update(['title'=>Input::get('title'),'content'=>Input::get('content')]);
+    return Redirect::to('course/'.$id)->with('message', 'Notification edited');
   }
 }
