@@ -20,9 +20,15 @@ And it should be open at [localhost:8000](http://localhost:8000).
 # Features
 
 - [x] reset password
-- [ ] teachers and students
-- [ ] announcements
+- [x] teachers and students
+- [x] announcements
 - [ ] file uploads
+
+# Useful
+
+code | what
+---|---
+`{{ dd(get_defined_vars(['__data'])) }}` | get defined vars in blade
 
 # License
 

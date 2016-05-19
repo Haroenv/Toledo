@@ -48,6 +48,8 @@ Route::post('/user', 'UserController@update');
 Route::get('/course/{id}', 'CourseController@single');
 // admin (notifications)
 Route::group(['prefix' => 'course/{id}', 'middleware' => ['auth','admin']], function () {
-  Route::get('/n/{notification}', 'CourseController@editNotification');
-  Route::post('/n/add', 'CourseController@addNotification');
+  Route::get('/n/{notification}', 'CourseController@showEditNotification');
+  Route::get('/notify', 'CourseController@showAddNotification');
+  Route::post('/n/{notification}', 'CourseController@executeEditNotification');
+  Route::post('/notify', 'CourseController@executeAddNotification');
 });

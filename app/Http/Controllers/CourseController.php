@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use Redirect;
 use App\Course;
 use App\Notification;
 use Auth;
@@ -25,29 +25,51 @@ class CourseController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function single($item) {
-        //var_dump(Auth::user()->courses()->get());
+    public function single(Request $request, $item) {
+        // todo: order
         $course = Course::where('code',$item)->first();
         $notifications = $course->notifications()->get();
+        $message = $request->session()->get('message');
         return view('course',[
             'course' => $course,
             'notifications' => $notifications,
+            'message' => $message,
         ]);
     }
 
-    // todo
-    public function addNotification() {
+    public function showAddNotification(Request $request) {
+        $message = $request->session()->get('message');
         return view('notification',[
             'title' => '',
-            'text' => '',
+            'content' => '',
+            'message' => $message,
         ]);
     }
 
-    // todo
-    public function editNotification() {
+    public function showEditNotification(Request $request, $id, $notification) {
+        $notif = Notification::where('id',$notification)->first();
+        $message = $request->session()->get('message');
         return view('notification',[
-            'title' => '',
-            'text' => '',
+            'title' => $notif->title,
+            'content' => $notif->content,
+            'message' => $message,
         ]);
     }
+
+    public function executeAddNotification(Request $request, $id) {
+        $notification = new Notification;
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+        $notification->title = $request->title;
+        $notification->content = $request->content;
+        $notification->course_id = Course::where('code',$id)->first()->id;
+        $notification->save();
+        return Redirect::to('course/'.$id)->with('message', 'Notification added');
+  }
+
+    // todo
+  public function executeEditNotification($notification) {
+  }
 }
