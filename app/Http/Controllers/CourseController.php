@@ -37,11 +37,17 @@ class CourseController extends Controller {
 
     // todo
     public function addNotification() {
-        # code...
+        return view('notification',[
+            'title' => '',
+            'text' => '',
+        ]);
     }
 
     // todo
     public function editNotification() {
-        # code...
+        return view('notification',[
+            'title' => '',
+            'text' => '',
+        ]);
     }
 }
