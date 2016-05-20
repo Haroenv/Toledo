@@ -54,6 +54,7 @@ class AuthController extends Controller {
                 'max:255',
                 'unique:users'
             ],
+            'confirmation_code' => 'required',
             'password' => 'required|min:6|confirmed',
         ]);
     }
