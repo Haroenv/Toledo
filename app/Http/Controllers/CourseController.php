@@ -103,7 +103,7 @@ class CourseController extends Controller {
 
     /**
      * show the edit course screen
-     * todo
+     *
      * @return \Illuminate\Http\Response
      */
     public function showEditCourse(Request $request,$id) {
@@ -120,7 +120,7 @@ class CourseController extends Controller {
 
     /**
     * execute the edit of a course
-    * todo
+    *
     * @return \Illuminate\Http\Response
     */
     public function executeEditCourse(Request $request,$id) {
