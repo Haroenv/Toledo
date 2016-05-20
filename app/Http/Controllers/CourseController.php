@@ -37,6 +37,11 @@ class CourseController extends Controller {
         ]);
     }
 
+    /**
+     * show the add notification screen
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function showAddNotification(Request $request) {
         $message = $request->session()->get('message');
         return view('notification',[
@@ -46,6 +51,11 @@ class CourseController extends Controller {
         ]);
     }
 
+    /**
+     * show the edit notification screen
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function showEditNotification(Request $request, $id, $notification) {
         $notif = Notification::where('id',$notification)->first();
         $message = $request->session()->get('message');
@@ -56,6 +66,11 @@ class CourseController extends Controller {
         ]);
     }
 
+    /**
+    * execute the addition of a new notification
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function executeAddNotification(Request $request, $id) {
         $notification = new Notification;
         $this->validate($request, [
@@ -67,14 +82,63 @@ class CourseController extends Controller {
         $notification->course_id = Course::where('code',$id)->first()->id;
         $notification->save();
         return Redirect::to('course/'.$id)->with('message', 'Notification added');
-  }
+    }
 
-  public function executeEditNotification(Request $request,$id,$notification) {
-    $this->validate($request, [
-        'title' => 'required|max:255',
-        'content' => 'required',
-    ]);
-    Notification::where('id',$notification)->first()->update(['title'=>Input::get('title'),'content'=>Input::get('content')]);
-    return Redirect::to('course/'.$id)->with('message', 'Notification edited');
-  }
+    /**
+    * execute the edit of a notification
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function executeEditNotification(Request $request,$id,$notification) {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+        Notification::where('id',$notification)
+            ->first()
+            ->update([
+                'title' => Input::get('title'),
+                'content' => Input::get('content'),
+            ]);
+        return Redirect::to('course/'.$id)->with('message', 'Notification edited');
+    }
+
+    /**
+     * show the edit course screen
+     * todo
+     * @return \Illuminate\Http\Response
+     */
+    public function showEditCourse(Request $request,$id) {
+        $message = $request->session()->get('message');
+        return view('admin',[
+            'message'=>$message,
+            'edit'=>true,
+        ]);
+    }
+
+    /**
+    * execute the edit of a course
+    * todo
+    * @return \Illuminate\Http\Response
+    */
+    public function executeEditNotification(Request $request,$id,$notification) {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'fullname' =>  [
+                'required',
+                'max:255',
+            ],
+            'code' => [
+                'required',
+                'max:20',
+            ],
+        ]);
+        Notification::where('id',$notification)
+            ->first()
+            ->update([
+                'title' => Input::get('title'),
+                'content' => Input::get('content'),
+            ]);
+        return Redirect::to('course/'.$id)->with('message', 'Notification edited');
+    }
 }

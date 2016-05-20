@@ -18,7 +18,10 @@ class AdminController extends Controller {
      */
     public function show(Request $request) {
       $message = $request->session()->get('message');
-      return view('admin',['message',$message]);
+      return view('admin',[
+        'message'=>$message,
+        'edit'=>false,
+      ]);
     }
 
     /**
@@ -30,14 +33,14 @@ class AdminController extends Controller {
       $course = new Course;
       $this->validate($request, [
         'name' => 'required|max:255',
-        'fullname' =>  array(
+        'fullname' =>  [
           'required',
           'max:255',
-          ),
-        'code' => array(
+          ],
+        'code' => [
           'required',
           'max:20',
-          ),
+          ],
         ]);
       $course->name = $request->name;
       $course->fullname = $request->fullname;

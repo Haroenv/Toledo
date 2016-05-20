@@ -8,6 +8,7 @@
                 <div class="col-md-10 col-md-offset-1 clearfix">
                     <h1 class="pull-left">{{$course->fullname}} ({{$course->code}})</h1>
                     @if (Auth::user()->isAdmin())
+                    <a href="{{ url('/course/'.$course->code.'/edit/') }}" class="btn btn-primary pull-right"><i class="fa fa-edit"></i></a>
                     <a class="btn btn-primary pull-right" href="{{ url('/course/'.$course->code.'/notify/') }}"><i class="fa fa-plus"></i></a>
                     @endif
                 </div>
@@ -22,7 +23,7 @@
                     <p>created: {{$notification->created_at}}</p>
                     <p>updated: {{$notification->updated_at}}</p>
                     @if (Auth::user()->isAdmin())
-                    <p><a href="{{ url('/course/'.$course->code.'/n/'.$notification->id.'/') }}">edit</a></p>
+                    <a href="{{ url('/course/'.$course->code.'/n/'.$notification->id.'/') }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                     @endif
                 </div>
             </div>
