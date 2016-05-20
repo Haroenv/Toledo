@@ -29,7 +29,6 @@
                     {{$notification->content}}
                     <p>created: {{$notification->created_at}}</p>
                     <p>updated: {{$notification->updated_at}}</p>
-
                 </div>
             </div>
             @endforeach
