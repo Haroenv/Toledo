@@ -40,6 +40,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('confirmation_code') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Confirmation code <a href="{{url('help')}}"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="confirmation_code" value="{{ old('confirmation_code') }}">
+
+                                @if ($errors->has('confirmation_code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('confirmation_code') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>
 
