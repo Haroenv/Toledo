@@ -14,6 +14,8 @@
                 </div>
             </div>
 
+            <!-- todo: add search -->
+
             @foreach ($notifications as $notification)
             <div class="panel panel-default">
                 <div class="panel-heading">{{$notification->title}}</div>

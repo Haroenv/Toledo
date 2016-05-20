@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            <!-- todo: add search -->
             @forelse ($courses as $course)
             <a href="{{ url('/course/'.$course->code) }}" class="nolink">
                 <div class="panel panel-default">
