@@ -3,10 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+
         <div class="col-md-10 col-md-offset-1">
             <!-- todo: add search -->
             @forelse ($courses as $course)
-            <a href="{{ url('/course/'.$course->code) }}" class="nolink">
+            <a href="{{ url('/course/'.$course->code) }}" class="nolink col-sm-4 col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{$course->name}}</div>
                     <div class="panel-body">
@@ -17,7 +18,7 @@
                 </div>
             </a>
             @empty
-            <div class="panel panel-default">
+            <div class="panel panel-default col-md-4">
                 <div class="panel-heading">Logged in</div>
 
                 <div class="panel-body">
