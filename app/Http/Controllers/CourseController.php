@@ -142,6 +142,6 @@ class CourseController extends Controller {
                 'fullname' => Input::get('fullname'),
                 'code' => Input::get('code'),
             ]);
-        return Redirect::to('course/'.$id)->with('message', 'Details edited');
+        return Redirect::to('course/'.Input::get('code'))->with('message', 'Details edited');
     }
 }
