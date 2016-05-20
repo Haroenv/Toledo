@@ -16,7 +16,7 @@
                             <label class="col-md-4 control-label">Title</a></label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="title" value="{{ $title ? $title : old('title') }}">
+                                <input type="text" class="form-control" name="title" value="{{ $title or old('title') }}">
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -30,7 +30,7 @@
                             <label class="col-md-4 control-label">Content</label>
 
                             <div class="col-md-6">
-                                <textarea type="text" class="form-control" name="content">{{ $content ? $content : old('content') }}</textarea>
+                                <textarea type="text" class="form-control" name="content">{{ $content or old('content') }}</textarea>
 
                                 @if ($errors->has('content'))
                                     <span class="help-block">

@@ -45,8 +45,6 @@ class CourseController extends Controller {
     public function showAddNotification(Request $request) {
         $message = $request->session()->get('message');
         return view('notification',[
-            'title' => '',
-            'content' => '',
             'message' => $message,
         ]);
     }
@@ -109,9 +107,13 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function showEditCourse(Request $request,$id) {
+        $course = Course::where('code',$id)->first();
         $message = $request->session()->get('message');
         return view('admin',[
             'message'=>$message,
+            'name'=>$course->name,
+            'fullname'=>$course->fullname,
+            'code'=>$course->code,
             'edit'=>true,
         ]);
     }
@@ -121,7 +123,7 @@ class CourseController extends Controller {
     * todo
     * @return \Illuminate\Http\Response
     */
-    public function executeEditNotification(Request $request,$id,$notification) {
+    public function executeEditCourse(Request $request,$id) {
         $this->validate($request, [
             'name' => 'required|max:255',
             'fullname' =>  [
@@ -133,12 +135,13 @@ class CourseController extends Controller {
                 'max:20',
             ],
         ]);
-        Notification::where('id',$notification)
+        Course::where('code',$id)
             ->first()
             ->update([
-                'title' => Input::get('title'),
-                'content' => Input::get('content'),
+                'name' => Input::get('name'),
+                'fullname' => Input::get('fullname'),
+                'code' => Input::get('code'),
             ]);
-        return Redirect::to('course/'.$id)->with('message', 'Notification edited');
+        return Redirect::to('course/'.$id)->with('message', 'Details edited');
     }
 }
