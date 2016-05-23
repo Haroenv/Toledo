@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use Redirect;
 use Auth;
+use App\Course;
 use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {
@@ -31,6 +32,7 @@ class UserController extends Controller {
       $message = $request->session()->get('message');
       return view('user', [
         'user' => Auth::user(),
+        'courses' => Course::all(),
         'message' => $message,
       ]);
     }

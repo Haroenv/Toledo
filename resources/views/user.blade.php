@@ -47,6 +47,11 @@
 
                                 <div class="col-md-6">
                                     <!-- todo: add classes -->
+                                    @forelse ($courses as $course)
+                                        <p>{{$course->id}} {{$course->fullname}} ({{$course->code}})</p>
+                                    @empty
+                                        <p>there are no courses</p>
+                                    @endforelse
                                     <input type="text" class="form-control" name="classes" value="TO DO!!">
 
                                     @if ($errors->has('classes'))
