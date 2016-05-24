@@ -11,7 +11,7 @@ class InvitesTableSeeder extends Seeder {
   public function run() {
     for ($i=0; $i < 10; $i++) {
       DB::table('invites')->insert([
-        'name' => str_random(20),
+        'code' => str_random(20),
       ]);
     }
   }
