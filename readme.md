@@ -7,22 +7,22 @@
 Fill in the `.env` with an app key, your mailgun settings
 
 ```
-$ composer install
-$ npm install
-$ sqlite3 database/database.sqlite ""
-$ npm run dev
-$ php artisan migrate --seed
+$ ./setup.sh
 $ php artisan serve
 ```
 
 And it should be open at [localhost:8000](http://localhost:8000).
 
-# Features
+# Considerations
 
-- [x] reset password
-- [x] teachers and students
-- [x] announcements
-- [ ] file uploads
+* courses aren't private
+    * since I think it's useful to look at other courses from time to time, it's nice to be able
+* you need an invitation code to join
+    * analogous to real Toledo, see the invitation code when you start a course
+* only u...@kuleuven.be or r...@student.kuleuven.be addresses
+    * no odisee ...
+* resetting password works
+    * when you enter a valid mailgun key in `.env`
 
 # Useful
 
