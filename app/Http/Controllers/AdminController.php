@@ -46,6 +46,7 @@ class AdminController extends Controller {
     $course->fullname = $request->fullname;
     $course->code = $request->code;
     $course->save();
+    Auth::user()->courses()->attach($course);
     return Redirect::route('dashboard')->with('message', 'Course added');
   }
 

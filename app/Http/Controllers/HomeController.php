@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Course;
+use Auth;
 
 class HomeController extends Controller {
     /**
@@ -24,7 +25,7 @@ class HomeController extends Controller {
     public function index(Request $request) {
         $message = $request->session()->get('message');
         return view('home',[
-            'courses' => Course::all(),
+            'courses' => Auth::user()->courses,
             'message' => $message,
         ]);
     }

@@ -26,43 +26,6 @@
                             </div>
                         </div>
 
-                        @if (strpos($user->email, 'student'))
-                            <div class="form-group{{ $errors->has('inscriptions') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Inscriptions</label>
-
-                                <div class="col-md-6">
-                                    <!-- todo: add inscriptions -->
-                                    <input type="text" class="form-control" name="inscriptions" value="TO DO!!">
-
-                                    @if ($errors->has('inscriptions'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('inscriptions') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                        @else
-                            <div class="form-group{{ $errors->has('classes') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Classes</label>
-
-                                <div class="col-md-6">
-                                    <!-- todo: add classes -->
-                                    @forelse ($courses as $course)
-                                        <p>{{$course->id}} {{$course->fullname}} ({{$course->code}})</p>
-                                    @empty
-                                        <p>there are no courses</p>
-                                    @endforelse
-                                    <input type="text" class="form-control" name="classes" value="TO DO!!">
-
-                                    @if ($errors->has('classes'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('classes') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                        @endif
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -72,6 +35,40 @@
                         </div>
                     </form>
 
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Inscriptions</label>
+
+                            <div class="col-md-6">
+                                <form class="clearfix" action="{{action('UserController@addCourse')}}" method="POST">
+                                    {!! csrf_field() !!}
+                                    <select class="form-control pull-left" style="width:auto;" name="add">
+                                    @forelse ($courses as $course)
+                                        <option value="{{$course->id}}">{{$course->fullname}} ({{$course->code}})</option>
+                                    @empty
+                                        <option>there are no courses</option>
+                                    @endforelse
+                                    </select>
+                                    <button class="btn btn-primary pull-right"><i class="fa fa-btn fa-plus"></i> Add</button>
+                                </form>
+
+                                @forelse ($user->courses as $course)
+                                    <div class="clearfix">
+                                        <p class="pull-left">{{$course->fullname}} ({{$course->code}})</p>
+                                        <a href="{{ url('/user/delete/'.$course->id) }}"class="btn btn-danger pull-right"><i class="fa fa-btn fa-remove"></i> Delete</a>
+                                    </div>
+                                @empty
+                                    <p> no inscriptions </p>
+                                @endforelse
+
+                                @if ($errors->has('inscriptions'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('inscriptions') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

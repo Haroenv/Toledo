@@ -41,8 +41,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
 });
 
 // user route
-Route::get('/user', 'UserController@show');
-Route::post('/user', 'UserController@update');
+Route::group(['prefix'=>'user'], function () {
+  Route::get('/', 'UserController@show');
+  Route::post('/', 'UserController@update');
+  Route::post('/add', 'UserController@addCourse');
+  Route::get('/delete/{id}', 'UserController@deleteCourse');
+});
 
 // courses
 Route::get('/course/{id}', 'CourseController@single');
@@ -51,6 +55,7 @@ Route::group(['prefix' => 'course/{id}', 'middleware' => ['auth','admin']], func
   Route::get('/n/{notification}', 'CourseController@showEditNotification');
   Route::get('/notify', 'CourseController@showAddNotification');
   Route::get('/edit', 'CourseController@showEditCourse');
+
   Route::post('/n/{notification}', 'CourseController@executeEditNotification');
   Route::post('/notify', 'CourseController@executeAddNotification');
   Route::post('/edit', 'CourseController@executeEditCourse');
