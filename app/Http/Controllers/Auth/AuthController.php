@@ -57,7 +57,7 @@ class AuthController extends Controller {
                 'max:255',
                 'unique:users'
             ],
-            'confirmation_code' => 'required',
+            'confirmation_code' => 'required|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
         $validator->after(function($validator) {
@@ -78,6 +78,7 @@ class AuthController extends Controller {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'confirmation_code' => $data['confirmation_code'],
             'password' => bcrypt($data['password']),
         ]);
     }

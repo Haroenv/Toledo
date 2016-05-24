@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder {
       'password' => bcrypt('test'),
       'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+      'confirmation_code' => str_random(20),
     ]);
 
     DB::table('users')->insert([
@@ -28,6 +29,7 @@ class UsersTableSeeder extends Seeder {
       'password' => bcrypt('test'),
       'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+      'confirmation_code' => str_random(20),
     ]);
   }
 }
