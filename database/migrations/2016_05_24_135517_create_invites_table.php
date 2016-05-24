@@ -5,10 +5,10 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateInvitesTable extends Migration {
     /**
-    * Run the migrations.
-    *
-    * @return void
-    */
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up() {
         Schema::create('invites', function (Blueprint $table) {
             $table->increments('id');

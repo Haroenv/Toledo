@@ -9,6 +9,10 @@ class InvitesTableSeeder extends Seeder {
    * @return void
    */
   public function run() {
-      //
+    for ($i=0; $i < 10; $i++) {
+      DB::table('invites')->insert([
+        'name' => str_random(20),
+      ]);
+    }
   }
 }
