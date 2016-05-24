@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Invite;
+use Illuminate\Support\Facades\Input;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -47,7 +48,7 @@ class AuthController extends Controller {
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data) {
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'name' => 'required|max:255',
             'email' =>  [
                 'regex:/^(r\d+@student\.|u\d+@)kuleuven\.be/',
@@ -59,21 +60,12 @@ class AuthController extends Controller {
             'confirmation_code' => 'required',
             'password' => 'required|min:6|confirmed',
         ]);
-    }
-
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request) {
-        $invite = Invite::where('code',$request->confirmation_code)->get();
-        if (!$invite->isEmpty()) {
-            return $this->register($request);
-        } else {
-            return view('auth.register')->with('message','wrong confirmation code');
-        }
+        $validator->after(function($validator) {
+            if (Invite::where('code',Input::get('confirmation_code'))->get()->isEmpty()) {
+                $validator->errors()->add('confirmation_code', 'This is no correct confirmation code.');
+            }
+        });
+        return $validator;
     }
 
     /**
