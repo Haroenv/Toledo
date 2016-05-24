@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Invite;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -57,6 +59,21 @@ class AuthController extends Controller {
             'confirmation_code' => 'required',
             'password' => 'required|min:6|confirmed',
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request) {
+        $invite = Invite::where('code',$request->confirmation_code)->get();
+        if (!$invite->isEmpty()) {
+            return $this->register($request);
+        } else {
+            return view('auth.register')->with('message','wrong confirmation code');
+        }
     }
 
     /**

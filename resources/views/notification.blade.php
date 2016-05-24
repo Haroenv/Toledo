@@ -8,7 +8,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Notification</div>
                 <div class="panel-body">
-                    <!-- todo -->
                     <form class="form-horizontal" role="form" method="POST" action="">
                         {!! csrf_field() !!}
 

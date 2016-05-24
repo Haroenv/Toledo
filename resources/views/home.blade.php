@@ -18,7 +18,7 @@
                 </div>
             </a>
             @empty
-            <div class="panel panel-default col-md-4">
+            <div class="panel panel-default">
                 <div class="panel-heading">Logged in</div>
 
                 <div class="panel-body">

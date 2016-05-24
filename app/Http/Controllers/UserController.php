@@ -27,8 +27,6 @@ class UserController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function show(Request $request) {
-    //var_dump(Auth::user()->courses()->get());
-    //todo: courses
     $message = $request->session()->get('message');
     return view('user', [
       'user' => Auth::user(),
