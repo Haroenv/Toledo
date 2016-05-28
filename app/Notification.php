@@ -12,6 +12,7 @@ class Notification extends Model {
   protected $fillable = [
     'title',
     'content',
+    'file',
   ];
 
   protected $dates = ['deleted_at'];

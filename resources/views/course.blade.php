@@ -29,7 +29,9 @@
                     @if (Auth::user()->isAdmin())
                     <ul class="list-inline pull-right">
                         <li>
-                            <a href="{{ url('/course/'.$course->code.'/d/'.$notification->id.'/') }}"><i class="text-danger fa fa-remove" onclick="return confirm('Are you sure you want to remove {{$notification->title}}?');"></i></a>
+                            <!-- in case the modal should be back: use this -->
+                            <!-- onclick="return confirm('Are you sure you want to remove {{$notification->title}}?');" -->
+                            <a href="{{ url('/course/'.$course->code.'/d/'.$notification->id.'/') }}"><i class="text-danger fa fa-remove"></i></a>
                         </li>
                         <li>
                             <a href="{{ url('/course/'.$course->code.'/n/'.$notification->id.'/') }}"><i class="fa fa-edit"></i></a>

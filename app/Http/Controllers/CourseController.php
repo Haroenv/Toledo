@@ -94,8 +94,7 @@ class CourseController extends Controller {
             'title' => 'required|max:255',
             'content' => 'required',
         ]);
-        Notification::where('id',$notification)
-            ->first()
+        Notification::where('id',$notification)->first()
             ->update([
                 'title' => $request->title,
                 'content' => $request->content,
@@ -106,10 +105,8 @@ class CourseController extends Controller {
             $name = pathinfo(Input::file('file')->getClientOriginalName(), PATHINFO_FILENAME);
             $fileName = $name.'-'.rand(100,999).'.'.$extension;
             Input::file('file')->move($destinationPath, $fileName);
-            Notification::where('id',$notification)
-                ->first()
+            Notification::where('id',$notification)->first()
                 ->update([
-                    //todo: figure out why it doesn't update
                     'file' => $fileName,
                 ]);
         }
