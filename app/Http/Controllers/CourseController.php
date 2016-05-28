@@ -60,6 +60,7 @@ class CourseController extends Controller {
         return view('notification',[
             'title' => $notif->title,
             'content' => $notif->content,
+            'file' => $notif->file,
             'message' => $message,
         ]);
     }
@@ -78,6 +79,14 @@ class CourseController extends Controller {
         $notification->title = $request->title;
         $notification->content = $request->content;
         $notification->course_id = Course::where('code',$id)->first()->id;
+        if (Input::hasFile('file') && Input::file('file')->isValid()) {
+            $destinationPath = 'uploads';
+            $extension = Input::file('file')->getClientOriginalExtension();
+            $name = pathinfo(Input::file('file')->getClientOriginalName(), PATHINFO_FILENAME);
+            $fileName = $name.'-'.rand(100,999).'.'.$extension;
+            Input::file('file')->move($destinationPath, $fileName);
+            $notification->file = $fileName;
+        }
         $notification->save();
         return Redirect::to('course/'.$id)->with('message', 'Notification added');
     }
@@ -95,9 +104,22 @@ class CourseController extends Controller {
         Notification::where('id',$notification)
             ->first()
             ->update([
-                'title' => Input::get('title'),
-                'content' => Input::get('content'),
+                'title' => $request->title,
+                'content' => $request->content,
             ]);
+        if (Input::hasFile('file') && Input::file('file')->isValid()) {
+            $destinationPath = 'uploads';
+            $extension = Input::file('file')->getClientOriginalExtension();
+            $name = pathinfo(Input::file('file')->getClientOriginalName(), PATHINFO_FILENAME);
+            $fileName = $name.'-'.rand(100,999).'.'.$extension;
+            Input::file('file')->move($destinationPath, $fileName);
+            Notification::where('id',$notification)
+                ->first()
+                ->update([
+                    //todo: figure out why it doesn't update
+                    'file' => $fileName,
+                ]);
+        }
         return Redirect::to('course/'.$id)->with('message', 'Notification edited');
     }
 
