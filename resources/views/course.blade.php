@@ -43,7 +43,7 @@
                 <div class="panel-body">
                     {{$notification->content}}
                     @if ($notification->file)
-                        <p><a href="{{ url('uploads/'.$notification->file) }}">{{$notification->file}}</a></p>
+                        <p><a target="_blank" href="{{ url('uploads/'.$notification->file) }}">{{$notification->file}}</a></p>
                     @endif
                     <p>created: {{$notification->created_at}}</p>
                     <p>updated: {{$notification->updated_at}}</p>
