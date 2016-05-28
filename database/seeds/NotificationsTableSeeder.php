@@ -20,6 +20,7 @@ class NotificationsTableSeeder extends Seeder {
           'title' => $faker->realText($maxNbChars = 15, $indexSize = 2),
           'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
           'course_id' => $x,
+          'file' => $faker->file($sourceDir = '/tmp', $targetDir = 'public/uploads', false),
           'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
           'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
