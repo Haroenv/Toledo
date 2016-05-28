@@ -8,8 +8,14 @@
                 <div class="col-md-12 clearfix">
                     <h1 class="pull-left">{{$course->fullname}} ({{$course->code}})</h1>
                     @if (Auth::user()->isAdmin())
-                    <a href="{{ url('/course/'.$course->code.'/edit/') }}" class="btn btn-primary pull-right"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-primary pull-right" href="{{ url('/course/'.$course->code.'/notify/') }}"><i class="fa fa-plus"></i></a>
+                    <ul class="list-inline pull-right">
+                        <li>
+                           <a href="{{ url('/course/'.$course->code.'/edit/') }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary" href="{{ url('/course/'.$course->code.'/notify/') }}"><i class="fa fa-plus"></i></a>
+                        </li>
+                    </ul>
                     @endif
                 </div>
             </div>
@@ -21,7 +27,14 @@
                 <div class="panel-heading">
                     {{$notification->title}}
                     @if (Auth::user()->isAdmin())
-                    <a href="{{ url('/course/'.$course->code.'/n/'.$notification->id.'/') }}" class="pull-right"><i class="fa fa-edit"></i></a>
+                    <ul class="list-inline pull-right">
+                        <li>
+                            <a href="{{ url('/course/'.$course->code.'/d/'.$notification->id.'/') }}"><i class="text-danger fa fa-remove" onclick="return confirm('Are you sure you want to remove {{$notification->title}}?');"></i></a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/course/'.$course->code.'/n/'.$notification->id.'/') }}"><i class="fa fa-edit"></i></a>
+                        </li>
+                    </ul>
                     @endif
                 </div>
 

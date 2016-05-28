@@ -144,4 +144,14 @@ class CourseController extends Controller {
             ]);
         return Redirect::to('course/'.Input::get('code'))->with('message', 'Details edited');
     }
+
+    /**
+     * delete a notification
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteNotification($id,$notification) {
+        Notification::find($notification)->delete();
+        return Redirect::to('course/'.$id)->with('message','Notification deleted');
+    }
 }
