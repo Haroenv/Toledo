@@ -116,6 +116,7 @@ class CourseController extends Controller {
             Notification::where('id',$notification)
                 ->first()
                 ->update([
+                    //todo: figure out why it doesn't update
                     'file' => $fileName,
                 ]);
         }

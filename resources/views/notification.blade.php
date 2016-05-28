@@ -44,7 +44,7 @@
 
                             <div class="col-md-6">
                                 @if (isset($file))
-                                    <pre>{{$file}}</pre>
+                                    <p><a href="{{ url('uploads/'.$file) }}">{{$file}}</a></p>
                                 @endif
                                 <input type="file" class="form-control" name="file">
 
