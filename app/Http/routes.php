@@ -56,6 +56,8 @@ Route::group(['prefix' => 'course/{id}', 'middleware' => ['auth','admin']], func
   Route::get('/notify', 'CourseController@showAddNotification');
   Route::get('/edit', 'CourseController@showEditCourse');
 
+  Route::get('/d/{notification}', 'CourseController@deleteNotification');
+
   Route::post('/n/{notification}', 'CourseController@executeEditNotification');
   Route::post('/notify', 'CourseController@executeAddNotification');
   Route::post('/edit', 'CourseController@executeEditCourse');
