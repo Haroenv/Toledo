@@ -29,11 +29,9 @@ class CourseController extends Controller {
     public function single(Request $request, $item) {
         $course = Course::where('code',$item)->first();
         $notifications = $course->notifications()->get()->sortByDesc("updated_at");
-        $message = $request->session()->get('message');
         return view('course',[
             'course' => $course,
             'notifications' => $notifications,
-            'message' => $message,
         ]);
     }
 
@@ -43,10 +41,7 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function showAddNotification(Request $request) {
-        $message = $request->session()->get('message');
-        return view('notification',[
-            'message' => $message,
-        ]);
+        return view('notification');
     }
 
     /**
@@ -56,12 +51,10 @@ class CourseController extends Controller {
      */
     public function showEditNotification(Request $request, $id, $notification) {
         $notif = Notification::where('id',$notification)->first();
-        $message = $request->session()->get('message');
         return view('notification',[
             'title' => $notif->title,
             'content' => $notif->content,
             'file' => $notif->file,
-            'message' => $message,
         ]);
     }
 
@@ -130,9 +123,7 @@ class CourseController extends Controller {
      */
     public function showEditCourse(Request $request,$id) {
         $course = Course::where('code',$id)->first();
-        $message = $request->session()->get('message');
         return view('admin',[
-            'message'=>$message,
             'name'=>$course->name,
             'fullname'=>$course->fullname,
             'code'=>$course->code,
@@ -174,7 +165,11 @@ class CourseController extends Controller {
      */
     public function deleteNotification($id,$notification) {
         Notification::find($notification)->delete();
-        return Redirect::to('course/'.$id)->with('message','Notification deleted.');
+        return Redirect::to('course/'.$id)->with([
+            'message'=>'Notification deleted.',
+            'action'=>'/course/'.$id.'/r/'.$notification,
+            'cta'=>'undo',
+        ]);
     }
 
     /**

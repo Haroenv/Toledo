@@ -69,9 +69,12 @@
     </nav>
 </div>
 
-    @if (isset($message))
+    @if (Session::has('message'))
     <div class="alert alert-info">
-      <strong>Info:</strong> {{$message}}
+      <strong>Info:</strong> {{Session::get('message')}}
+      @if (Session::has('action') && Session::has('cta'))
+          <a href="{{Session::get('action')}}" class="btn btn-primary">{{Session::get('cta')}}</a>
+      @endif
     </div>
     @endif
 

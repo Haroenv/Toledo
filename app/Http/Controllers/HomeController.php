@@ -23,10 +23,8 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        $message = $request->session()->get('message');
         return view('home',[
             'courses' => Auth::user()->courses,
-            'message' => $message,
         ]);
     }
 }

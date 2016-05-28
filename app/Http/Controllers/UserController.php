@@ -27,11 +27,9 @@ class UserController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function show(Request $request) {
-    $message = $request->session()->get('message');
     return view('user', [
       'user' => Auth::user(),
       'courses' => Course::all(),
-      'message' => $message,
     ]);
   }
 

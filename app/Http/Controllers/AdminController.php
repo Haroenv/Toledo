@@ -17,9 +17,7 @@ class AdminController extends Controller {
    * @return \Illuminate\Http\Response
    */
   public function show(Request $request) {
-    $message = $request->session()->get('message');
     return view('admin',[
-      'message'=>$message,
       'edit'=>false,
     ]);
   }
