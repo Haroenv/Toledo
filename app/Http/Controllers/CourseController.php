@@ -174,6 +174,18 @@ class CourseController extends Controller {
      */
     public function deleteNotification($id,$notification) {
         Notification::find($notification)->delete();
-        return Redirect::to('course/'.$id)->with('message','Notification deleted');
+        return Redirect::to('course/'.$id)->with('message','Notification deleted.');
+    }
+
+    /**
+     * restore a notification
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function restoreNotification($id,$notification) {
+        // undoing would be done via
+        Notification::withTrashed()->find($notification)->restore();
+        // but I don't know how to trigger that function
+        return Redirect::to('course/'.$id)->with('message','Notification restored.');
     }
 }
