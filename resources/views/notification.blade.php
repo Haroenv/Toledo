@@ -40,9 +40,12 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Content</label>
+                            <label class="col-md-4 control-label">File</label>
 
                             <div class="col-md-6">
+                                @if (isset($file))
+                                    <pre>{{$file}}</pre>
+                                @endif
                                 <input type="file" class="form-control" name="file">
 
                                 @if ($errors->has('file'))

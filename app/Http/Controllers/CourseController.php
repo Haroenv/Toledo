@@ -60,6 +60,7 @@ class CourseController extends Controller {
         return view('notification',[
             'title' => $notif->title,
             'content' => $notif->content,
+            'file' => $notif->file,
             'message' => $message,
         ]);
     }
@@ -78,13 +79,13 @@ class CourseController extends Controller {
         $notification->title = $request->title;
         $notification->content = $request->content;
         $notification->course_id = Course::where('code',$id)->first()->id;
-        $notification->file = Input::file('file');
         if (Input::hasFile('file') && Input::file('file')->isValid()) {
             $destinationPath = 'uploads';
             $extension = Input::file('file')->getClientOriginalExtension();
-            $fileName = Input::file('file')->getClientOriginalName();
+            $name = pathinfo(Input::file('file')->getClientOriginalName(), PATHINFO_FILENAME);
+            $fileName = $name.'-'.rand(100,999).'.'.$extension;
             Input::file('file')->move($destinationPath, $fileName);
-            return $fileName;
+            $notification->file = $fileName;
         }
         $notification->save();
         return Redirect::to('course/'.$id)->with('message', 'Notification added');
@@ -106,6 +107,18 @@ class CourseController extends Controller {
                 'title' => $request->title,
                 'content' => $request->content,
             ]);
+        if (Input::hasFile('file') && Input::file('file')->isValid()) {
+            $destinationPath = 'uploads';
+            $extension = Input::file('file')->getClientOriginalExtension();
+            $name = pathinfo(Input::file('file')->getClientOriginalName(), PATHINFO_FILENAME);
+            $fileName = $name.'-'.rand(100,999).'.'.$extension;
+            Input::file('file')->move($destinationPath, $fileName);
+            Notification::where('id',$notification)
+                ->first()
+                ->update([
+                    'file' => $fileName,
+                ]);
+        }
         return Redirect::to('course/'.$id)->with('message', 'Notification edited');
     }
 
