@@ -78,6 +78,14 @@ class CourseController extends Controller {
         $notification->title = $request->title;
         $notification->content = $request->content;
         $notification->course_id = Course::where('code',$id)->first()->id;
+        $notification->file = Input::file('file');
+        if (Input::hasFile('file') && Input::file('file')->isValid()) {
+            $destinationPath = 'uploads';
+            $extension = Input::file('file')->getClientOriginalExtension();
+            $fileName = Input::file('file')->getClientOriginalName();
+            Input::file('file')->move($destinationPath, $fileName);
+            return $fileName;
+        }
         $notification->save();
         return Redirect::to('course/'.$id)->with('message', 'Notification added');
     }
@@ -95,8 +103,8 @@ class CourseController extends Controller {
         Notification::where('id',$notification)
             ->first()
             ->update([
-                'title' => Input::get('title'),
-                'content' => Input::get('content'),
+                'title' => $request->title,
+                'content' => $request->content,
             ]);
         return Redirect::to('course/'.$id)->with('message', 'Notification edited');
     }

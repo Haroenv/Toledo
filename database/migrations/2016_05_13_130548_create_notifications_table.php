@@ -14,8 +14,9 @@ class CreateNotificationsTable extends Migration {
             $table->increments('id');
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');
-            $table->text('title');
-            $table->text('content');
+            $table->string('title');
+            $table->string('content');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
