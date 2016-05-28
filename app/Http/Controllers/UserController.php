@@ -29,7 +29,7 @@ class UserController extends Controller {
   public function show(Request $request) {
     return view('user', [
       'user' => Auth::user(),
-      'courses' => Course::all(),
+      'courses' => Course::all()->sortByDesc('id'),
     ]);
   }
 

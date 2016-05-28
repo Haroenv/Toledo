@@ -28,7 +28,7 @@ class CourseController extends Controller {
      */
     public function single(Request $request, $item) {
         $course = Course::where('code',$item)->first();
-        $notifications = $course->notifications()->get()->sortByDesc("updated_at");
+        $notifications = $course->notifications()->get()->sortByDesc('updated_at');
         return view('course',[
             'course' => $course,
             'notifications' => $notifications,
