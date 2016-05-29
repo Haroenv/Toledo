@@ -69,6 +69,15 @@
     </nav>
 </div>
 
+    <div class="container">
+    @for ($i = 0; $i <= count(Request::segments()); $i++)
+      <a href="">{{Request::segment($i)}}</a>
+      @if($i < count(Request::segments()) & $i > 0)
+        <i class="fa fa-angle-right"></i>
+      @endif
+    @endfor
+    </div>
+
     @if (Session::has('message'))
     <div class="alert alert-info">
       <strong>Info:</strong> {{Session::get('message')}}
