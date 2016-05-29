@@ -7,8 +7,7 @@
 Fill in the `.env` with an app key, your mailgun settings
 
 ```
-$ ./setup.sh
-$ php artisan serve
+$ ./setup.sh serve
 ```
 
 And it should be open at [localhost:8000](http://localhost:8000).

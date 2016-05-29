@@ -4,6 +4,5 @@
 /public/build
 /public/js
 /public/css
-Homestead.yaml
-Homestead.json
+/public/uploads
 .env
