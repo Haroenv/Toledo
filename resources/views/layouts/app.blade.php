@@ -71,7 +71,7 @@
 
     <div class="container">
     @for ($i = 0; $i <= count(Request::segments()); $i++)
-      <a href="">{{Request::segment($i)}}</a>
+      <a href="@for($j = 0; $j < $i; $j++)../@endfor">{{Request::segment($i)}}</a>
       @if($i < count(Request::segments()) & $i > 0)
         <i class="fa fa-angle-right"></i>
       @endif
