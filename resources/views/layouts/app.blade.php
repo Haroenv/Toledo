@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/timcreative/material-kit/master/assets/css/material-kit.css">
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
